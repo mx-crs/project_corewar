@@ -68,12 +68,11 @@ $(VM_OBJ): %.o: %.c
 $(AS_NAME): $(AS_OBJ)
 	@make -f makefile.libft
 	@gcc $(CFLAGS) -o $(AS_NAME) $(AS_OBJ) $(LIB)
-	@echo "\033[32mCreated asm, object files and library\033[0m"
+	@echo "\033[32mCreated asm\033[0m"
 
 $(VM_NAME): $(VM_OBJ)
-	@make -f makefile.libft
 	@gcc $(CFLAGS) -lncurses -o $(VM_NAME) $(VM_OBJ) $(LIB)
-	@echo "\033[32mCreated corewar, object files and library\033[0m"
+	@echo "\033[32mCreated corewar\033[0m"
 
 clean:
 	@rm -rf $(AS_OBJ) $(LIBOBJ) $(VM_OBJ)
@@ -82,6 +81,6 @@ clean:
 fclean: clean
 	@rm -rf $(AS_NAME) $(VM_NAME)
 	@make -f makefile.libft fclean
-	@echo "\033[32mRemoved asm, object Files and library\033[0m"
+	@echo "\033[32mRemoved vm, asm, object Files and library\033[0m"
 
 re: fclean all
