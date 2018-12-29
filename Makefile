@@ -81,6 +81,6 @@ clean:
 fclean: clean
 	@rm -rf $(AS_NAME) $(VM_NAME)
 	@make -f makefile.libft fclean
-	@echo "\033[32mRemoved vm, asm, object Files and library\033[0m"
+	@echo "\033[32mRemoved corewar, asm, object Files and library\033[0m"
 
 re: fclean all
