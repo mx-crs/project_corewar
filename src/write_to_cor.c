@@ -20,6 +20,8 @@ int		ft_write_to_cor_file(t_asm *file)
 		return (0);
 	if ((fd = open(file->file_name, O_CREAT | O_WRONLY | O_TRUNC, 0666)) == -1)
 		return (0);
+	if (file->flag == 1)
+		ft_print_cong();
 	ft_printf("Writing output program to %s\n", file->file_name);
 	write(fd, file->file, file->f_size);
 	close(fd);

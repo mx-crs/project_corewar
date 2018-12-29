@@ -97,6 +97,7 @@ int		ft_fill_input_file(t_asm *file, char **av, int ac)
 	char	*tmp;
 
 	i = ac - 1;
+	file->flag = 0;
 	len = ft_strlen(av[i]) - 1;
 	if (((fd = open(av[i], O_RDONLY)) == -1) ||
 		(av[i][len] != 's' || (len > 0 && av[i][len - 1] != '.')) || len < 3)
@@ -109,6 +110,7 @@ int		ft_fill_input_file(t_asm *file, char **av, int ac)
 	free(tmp);
 	if (!ft_get_task(file, fd))
 		return (0);
+	ft_is_flag(file, av, ac);
 	close(fd);
 	return (1);
 }

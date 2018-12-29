@@ -14,7 +14,8 @@
 
 void	ft_usage(void)
 {
-	ft_printf("Usage: ./asm <sourcefile.s>\n");
+	ft_printf("Usage: ./asm [-h] <sourcefile.s>\n");
+	ft_printf("       -h: Surprise :)\n");
 }
 
 int		ft_fill_core_struct(t_asm *file, char **av, int ac)

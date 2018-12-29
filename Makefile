@@ -25,6 +25,7 @@ FILES = main.c \
 		fill_label1.c \
 		write_to_cor.c \
 		op_tab.c \
+		congr_flag.c \
 		validation.c \
 		validation1.c \
 		validation2.c

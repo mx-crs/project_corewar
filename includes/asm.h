@@ -15,14 +15,11 @@
 
 # include "../src/libft/includes/libft.h"
 
-# include <stdio.h>
-
 # define T_REG				1
 # define T_DIR				2
 # define T_IND				4
 
 # define REG_NUMBER			16
-
 # define LABEL_CHARS		"abcdefghijklmnopqrstuvwxyz_0123456789"
 # define COMMAND_CHARS		"abcdefghijklmnopqrstuvwxyz_0123456789"
 # define NAME_CMD			".name \t"
@@ -63,6 +60,7 @@ typedef struct				s_asm
 {
 	char					*file_name;
 	char					file[PREFIX_PRG + BOT_MAX_SIZE];
+	int						flag;
 	int						f_size;
 	char					*in_file;
 	char					**in_file_n;
@@ -146,5 +144,9 @@ int							ft_iter_n_c(int *n_c, char nc);
 int							ft_shift_comment_name(int *i, char *in_file);
 int							ft_valid_name_comment(t_asm *file);
 void						ft_iter_until_pnt(t_asm *file, int *i, char chr);
+
+void						ft_print_cong(void);
+void						ft_print_cong1(void);
+void						ft_is_flag(t_asm *file, char **av, int ac);
 
 #endif
