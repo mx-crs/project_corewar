@@ -50,6 +50,9 @@ void	create_vm(t_vm **vm)
 		(*vm)->mem[i]->last_update = 0;
 		(*vm)->mem[i++]->player = NULL;
 	}
+	i = 0;
+	while (i < MAX_PLAYERS)
+		(*vm)->players[i++] = NULL;
 }
 
 char	*hex_string(unsigned char c)

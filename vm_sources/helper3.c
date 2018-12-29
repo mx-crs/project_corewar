@@ -19,9 +19,9 @@ int		count_players(t_vm *vm)
 
 	i = 0;
 	c = 0;
-	while (i++ < MAX_PLAYERS)
+	while (i < MAX_PLAYERS)
 	{
-		c += (vm->players[i] != NULL);
+		c += (vm->players[i++] != NULL);
 	}
 	return (c);
 }
