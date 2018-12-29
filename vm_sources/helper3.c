@@ -15,18 +15,15 @@
 int		count_players(t_vm *vm)
 {
 	int			i;
-	t_player	*tmp;
+	int			c;
 
 	i = 0;
-	tmp = vm->player;
-	while (tmp != NULL)
+	c = 0;
+	while (i++ < MAX_PLAYERS)
 	{
-		i++;
-		tmp = tmp->next;
+		c += (vm->players[i] != NULL);
 	}
-	if (i > MAX_PLAYERS)
-		die("Error: Max number of players exceeded!");
-	return (i);
+	return (c);
 }
 
 void	set_player_indexes(t_vm *vm)
@@ -46,29 +43,22 @@ void	set_player_indexes(t_vm *vm)
 
 void	sort_players(t_vm *vm)
 {
-	t_player	*tmp;
-	t_player	*tmp2;
+	t_player	*prev;
+	t_player	*cand;
 	int			i;
 
-	tmp = vm->player;
-	i = 0;
+	prev = NULL;
+	i = 1;
 	die_if_p_index_sucks(vm);
-	while (tmp != NULL)
+	while (i <= count_players(vm))
 	{
-		i++;
-		if ((tmp->idx > 0) && (tmp->idx != i))
-		{
-			i = 1;
-			tmp2 = vm->player;
-			while (i++ < tmp->idx)
-				tmp2 = tmp2->next;
-			tmp->next = tmp2->next;
-			tmp2->next = tmp;
-			tmp = vm->player;
-			i = 0;
-		}
+		cand = candidate(vm, i);
+		if (prev == NULL)
+			vm->player = cand;
 		else
-			tmp = tmp->next;
+			prev->next = cand;
+		prev = cand;
+		cand->idx = i++;
 	}
 	set_player_indexes(vm);
 }

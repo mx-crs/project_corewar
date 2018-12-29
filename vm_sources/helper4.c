@@ -12,7 +12,7 @@
 
 #include "corewarvm.h"
 
-void	die_if_p_index_sucks(t_vm *vm)
+void		die_if_p_index_sucks(t_vm *vm)
 {
 	int			c;
 	t_player	*tmp;
@@ -27,7 +27,7 @@ void	die_if_p_index_sucks(t_vm *vm)
 	}
 }
 
-void	decrease_cycle_to_die(t_vm *vm)
+void		decrease_cycle_to_die(t_vm *vm)
 {
 	t_player	*p;
 
@@ -43,4 +43,27 @@ void	decrease_cycle_to_die(t_vm *vm)
 		p->lives = 0;
 		p = p->next;
 	}
+}
+
+t_player	*candidate(t_vm *vm, int i)
+{
+	int			j;
+	t_player	*cand;
+
+	j = -1;
+	cand = NULL;
+	while (++j < MAX_PLAYERS)
+	{
+		if ((vm->players[j] != NULL))
+		{
+			if ((vm->players[j]->idx < 0) && (cand == NULL))
+				cand = vm->players[j];
+			else if (vm->players[j]->idx == i)
+			{
+				cand = vm->players[j];
+				break ;
+			}
+		}
+	}
+	return (cand);
 }

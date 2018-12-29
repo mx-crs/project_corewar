@@ -41,21 +41,20 @@ void	create_player2(t_vm *vm, char *filename, int idx)
 
 void	insert_player(t_vm *vm, t_player *p, int idx)
 {
-	t_player	*tmp;
+	int			i;
 
-	if (vm->player == NULL)
-		vm->player = p;
-	else
+	if (idx > MAX_PLAYERS)
+		die("Error: Max number of players exceeded!");
+	i = 0;
+	while (i < MAX_PLAYERS)
 	{
-		tmp = vm->player;
-		while (tmp->next != NULL)
-		{
-			if ((idx > 0) && (tmp->idx == idx))
-				die("Error: Two players cannot have the same index!");
-			tmp = tmp->next;
-		}
-		tmp->next = p;
+		if ((vm->players[i] != NULL) && (idx > 0) && (vm->players[i]->idx == idx))
+			die("Error: Two players cannot have the same index!");
+		if (vm->players[i] == NULL)
+			break ;
+		i++;
 	}
+	vm->players[i] = p;
 }
 
 void	add_player(t_vm *vm, char *file, int idx)

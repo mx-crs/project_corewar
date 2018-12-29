@@ -87,6 +87,7 @@ typedef	struct			s_vm
 	char				visual_mode;
 	int					nbr_cycles;
 	int					fps;
+	t_player			*players[MAX_PLAYERS];
 	clock_t				next_cycle_time;
 	t_player			*winner;
 	t_map_cell			**mem;
@@ -128,6 +129,7 @@ char					*hex_string(unsigned char c);
 void					add_player(t_vm *vm, char *file, int idx);
 char					*string_from_binary(char *binary, int start, \
 						int length);
+t_player				*candidate(t_vm *vm, int i);
 void					ex_live(t_process *pr);
 void					ex_lfork(t_process *pr);
 void					ex_zjmp(t_process *pr);

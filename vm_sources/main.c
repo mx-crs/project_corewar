@@ -94,9 +94,9 @@ void		start_game1(t_vm *vm)
 
 	vm->log = vm->log && (vm->visual_mode == 0);
 	vm->next_cycle_time = clock() + 1000000 / vm->fps;
+	sort_players(vm);
 	if (vm->player == NULL)
 		print_usage();
-	sort_players(vm);
 	l = MEM_SIZE / count_players(vm);
 	start_game2(vm, l, 0);
 }

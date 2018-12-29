@@ -109,9 +109,9 @@ void	ex_live(t_process *pr)
 	{
 		if (tmp->idx == (int)value)
 		{
-			if (pr->vm->visual_mode == 0)
+			/*if (pr->vm->visual_mode == 0)
 				ft_printf("A process shows that player %d (%s) is alive\n",
-					tmp->n, tmp->name);
+					tmp->n, tmp->name);*/
 			tmp->lives += 1;
 			tmp->last_live = pr->vm->cycle;
 			pr->vm->winner = tmp;
