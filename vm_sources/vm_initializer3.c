@@ -48,7 +48,7 @@ void	insert_player(t_vm *vm, t_player *p, int idx)
 	i = 0;
 	while (i < MAX_PLAYERS)
 	{
-		if ((vm->players[i] != NULL) && (idx > 0) && ё
+		if ((vm->players[i] != NULL) && (idx > 0) && \
 			(vm->players[i]->idx == idx))
 			die("Error: Two players cannot have the same index!");
 		if (vm->players[i] == NULL)
