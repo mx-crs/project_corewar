@@ -65,5 +65,7 @@ t_player	*candidate(t_vm *vm, int i)
 			}
 		}
 	}
+	if (cand == NULL)
+		die("Error: Player index cannot exceed player count!");
 	return (cand);
 }
